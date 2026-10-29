@@ -50,10 +50,11 @@ fun groupConversations(messages: List<SmsMessage>): List<Conversation> {
 fun filterConversations(conversations: List<Conversation>, query: String): List<Conversation> {
     val q = query.trim()
     if (q.isEmpty()) return conversations
+    val normalizedQuery = normalizeAddress(q)
     return conversations.filter {
         it.displayAddress.contains(q, ignoreCase = true) ||
             it.snippet.contains(q, ignoreCase = true) ||
-            normalizeAddress(it.displayAddress).contains(normalizeAddress(q))
+            (normalizedQuery.isNotEmpty() && normalizeAddress(it.displayAddress).contains(normalizedQuery))
     }
 }
 

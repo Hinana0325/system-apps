@@ -238,6 +238,7 @@ private fun DialerScreen(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun CallLogScreen(
     entries: List<CallLogEntry>,

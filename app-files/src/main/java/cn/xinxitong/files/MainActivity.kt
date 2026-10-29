@@ -9,6 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +29,7 @@ import androidx.compose.material.icons.filled.CreateNewFolder
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Paste
+import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Card
@@ -89,6 +90,7 @@ private fun mimeTypeFor(file: File): String {
     return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension) ?: "*/*"
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun FilesScreen(viewModel: FilesViewModel = viewModel()) {
     val context = LocalContext.current
@@ -140,7 +142,7 @@ private fun FilesScreen(viewModel: FilesViewModel = viewModel()) {
                 actions = {
                     if (clipboard != null) {
                         IconButton(onClick = { viewModel.paste() }) {
-                            Icon(Icons.Filled.Paste, contentDescription = "粘贴")
+                            Icon(Icons.Filled.ContentPaste, contentDescription = "粘贴")
                         }
                     }
                     IconButton(onClick = { showCreateFolder = true }) {

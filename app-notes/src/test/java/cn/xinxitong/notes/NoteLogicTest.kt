@@ -18,7 +18,7 @@ class NoteLogicTest {
 
     @Test
     fun countsAreReal() {
-        assertEquals(5, countCharacters("你好 世界"))
+        assertEquals(4, countCharacters("你好 世界"))
         assertEquals(0, countCharacters("   "))
         assertEquals(3, countLines("a\nb\nc"))
         assertEquals(0, countLines(""))

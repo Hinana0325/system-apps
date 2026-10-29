@@ -67,7 +67,7 @@ class EvaluatorTest {
         assertEquals("14", value("2×3+8"))
         assertEquals("5", value("10÷2"))
         assertEquals("2.5", value("5/2"))
-        assertEquals("2", value("4.0"))
+        assertEquals("4", value("4.0"))
     }
 
     @Test
@@ -75,7 +75,7 @@ class EvaluatorTest {
         assertEquals("-", appendKey("", "-"))
         assertEquals("", appendKey("", "+"))
         assertEquals("2+3", appendKey("2+", "3"))
-        assertEquals("2-3", appendKey("2+", "-"))
+        assertEquals("2-", appendKey("2+", "-"))
         assertEquals("2*-3", appendKey("2*", "-"))
         assertEquals("1.5", appendKey("1.5", "."))
         assertEquals("1.5+", appendKey("1.5", "+"))

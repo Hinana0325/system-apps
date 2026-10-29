@@ -175,7 +175,7 @@ private fun MessagesScreen(viewModel: MessagesViewModel = viewModel()) {
         ActivityResultContracts.RequestPermission(),
     ) { granted ->
         hasContactsPermission = granted
-        if (granted) contactPickerLauncher.launch()
+        if (granted) contactPickerLauncher.launch(null)
     }
 
     Scaffold(
@@ -218,7 +218,7 @@ private fun MessagesScreen(viewModel: MessagesViewModel = viewModel()) {
                 modifier = Modifier.padding(padding),
                 onPickContact = {
                     if (hasContactsPermission) {
-                        contactPickerLauncher.launch()
+                        contactPickerLauncher.launch(null)
                     } else {
                         contactsPermissionLauncher.launch(Manifest.permission.READ_CONTACTS)
                     }
